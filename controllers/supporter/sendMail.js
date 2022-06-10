@@ -37,7 +37,7 @@ module.exports.sendMail = [
       })
       await email.save()
 
-      files.map(async file => {
+      files && files.map(async file => {
         const attachment = new Attachment({
           ...file, email: new mongoose.Types.ObjectId(email._id)
         })
@@ -46,7 +46,7 @@ module.exports.sendMail = [
 
       response.success(res, email)
     } catch (err) {
-      req.files && req.files.files.map(async file => {
+      req.files && req.files.files && req.files.files.map(async file => {
         const f = await Attachment.deleteOne({ path: file.path })
         unlink(file.path, (err) => {
           if (err) console.log(err)

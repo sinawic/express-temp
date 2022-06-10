@@ -43,7 +43,6 @@ const EmailSchema = new mongoose.Schema({
   supporter: { type: mongoose.Schema.Types.ObjectId },
   room: { type: mongoose.Schema.Types.ObjectId }
 })
-EmailSchema.index({ email: 1 }, { unique: true })
 const Email = mongoose.model('email', EmailSchema)
 
 

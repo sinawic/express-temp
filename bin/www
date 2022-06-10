@@ -9,6 +9,7 @@ var app = require('../app');
 var debug = require('debug')('express-temp:server');
 var http = require('http');
 const { db_connection } = require('./../db')
+const { init: mailService } = require('./../mailService')
 
 db_connection()
 
@@ -92,3 +93,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+mailService()
