@@ -15,7 +15,7 @@ const SupporterSchema = new mongoose.Schema({
   username: { type: String, required: true },
   password: String,
   active: { type: Boolean, default: true },
-  room: { RoomSchema }
+  room: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'room' }
 })
 SupporterSchema.index({ email: 1 }, { unique: true })
 const Supporter = mongoose.model('supporter', SupporterSchema)
@@ -29,7 +29,7 @@ const AttachmentSchema = new mongoose.Schema({
   filename: String,
   path: String,
   size: Number,
-  email: { type: mongoose.Schema.Types.ObjectId }
+  email: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'email' }
 })
 const Attachment = mongoose.model('attachment', AttachmentSchema)
 
