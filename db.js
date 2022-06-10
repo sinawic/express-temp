@@ -1,6 +1,6 @@
 // Bring Mongoose into the app 
 var mongoose = require('mongoose');
-const { connection_string } = require('./helper');
+const { connection_string } = require('./helpers');
 
 const db_connection = async () => {
 

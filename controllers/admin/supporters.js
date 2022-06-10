@@ -1,6 +1,6 @@
 const { Supporter, Room } = require('./../../models/models')
 const response = require('./../../helpers/responseHelper')
-const { sha1 } = require('./../../helper')
+const { sha1 } = require('./../../helpers')
 const mongoose = require('mongoose')
 const { body, validationResult } = require('express-validator')
 

@@ -2,7 +2,7 @@ const { Supporter } = require('./../../models/models')
 const response = require('./../../helpers/responseHelper')
 const { genJWTtoken } = require('./../../helpers/jwtHelper')
 const { body, validationResult } = require('express-validator')
-const { sha1 } = require('../../helper')
+const { sha1 } = require('../../helpers')
 
 
 module.exports.login = [
