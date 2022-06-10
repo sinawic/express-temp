@@ -1,16 +1,16 @@
 const express = require('express')
 const router = express.Router()
 
-const SupporterService = require('../../controllers/admin/supporters')
+const Service = require('../../controllers/admin/supporters')
 
-router.get('/', SupporterService.getSupporters)
+router.get('/', Service.getSupporters)
 
-router.get('/:id', SupporterService.getSupporterDetails)
+router.get('/:id', Service.getSupporterDetails)
 
-router.post('/', SupporterService.createSupporter)
+router.post('/', Service.createSupporter)
 
-router.put('/:id', SupporterService.editSupporter)
+router.put('/:id', Service.editSupporter)
 
-router.delete('/:id', SupporterService.deleteSupporter)
+router.delete('/:id', Service.deleteSupporter)
 
 module.exports = router

@@ -27,7 +27,6 @@ module.exports = async (req, res, next) => {
     "ascii"
   );
   const [username, password] = credentials.split(":");
-  console.log(username, password);
   if (
     username === process.env.BASICAUTH_USERNAME &&
     password === process.env.BASICAUTH_PASSWORD

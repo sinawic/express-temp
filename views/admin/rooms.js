@@ -1,16 +1,16 @@
 const express = require('express')
 const router = express.Router()
 
-const RoomService = require('../../controllers/admin/rooms')
+const Service = require('../../controllers/admin/rooms')
 
-router.get('/', RoomService.getRooms)
+router.get('/', Service.getRooms)
 
-router.get('/:id', RoomService.getRoomDetails)
+router.get('/:id', Service.getRoomDetails)
 
-router.post('/', RoomService.createRoom)
+router.post('/', Service.createRoom)
 
-router.put('/:id', RoomService.editRoom)
+router.put('/:id', Service.editRoom)
 
-router.delete('/:id', RoomService.deleteRoom)
+router.delete('/:id', Service.deleteRoom)
 
 module.exports = router

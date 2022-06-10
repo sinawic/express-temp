@@ -39,7 +39,7 @@ const EmailSchema = new mongoose.Schema({
   to: { type: String, required: true },
   subject: { type: String, required: true },
   text: { type: String, required: true },
-  sent: { type: Boolean, default: true },
+  sent: { type: Boolean, default: false },
   supporter: { type: mongoose.Schema.Types.ObjectId },
   room: { type: mongoose.Schema.Types.ObjectId }
 })

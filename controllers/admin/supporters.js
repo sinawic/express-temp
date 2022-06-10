@@ -1,6 +1,5 @@
 const { Supporter, Room } = require('./../../models/models')
 const response = require('./../../helpers/responseHelper')
-const { genJWTtoken } = require('./../../helpers/jwtHelper')
 const { sha1 } = require('./../../helper')
 const mongoose = require('mongoose')
 const { body, validationResult } = require('express-validator')
