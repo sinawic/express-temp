@@ -1,4 +1,4 @@
-const { Supporter, Room } = require('./../../models/models')
+const { Supporter, Room } = require('./../../models/adminModels')
 const response = require('./../../helpers/responseHelper')
 const { sha1 } = require('./../../helpers')
 const mongoose = require('mongoose')

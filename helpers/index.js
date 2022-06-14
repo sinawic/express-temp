@@ -34,8 +34,9 @@ function sendMail(options) {
     mailOptions.attachments = options.attachments.map(attachment => ({ path: attachment.path }))
   }
 
-  transporter.sendMail(mailOptions, function (error, info) {
+  return transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
+      throw new Error(error)
       console.log(error);
     } else {
       console.log('Email sent: ' + info.response);

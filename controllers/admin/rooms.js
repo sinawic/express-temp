@@ -1,4 +1,4 @@
-const { Room } = require('./../../models/models')
+const { Room } = require('./../../models/adminModels')
 const response = require('./../../helpers/responseHelper')
 const mongoose = require('mongoose')
 const { body, validationResult } = require('express-validator')

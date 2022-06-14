@@ -1,4 +1,4 @@
-const { Supporter } = require('./../../models/models')
+const { Supporter } = require('./../../models/adminModels')
 const response = require('./../../helpers/responseHelper')
 const { genJWTtoken } = require('./../../helpers/jwtHelper')
 const { body, validationResult } = require('express-validator')

@@ -1,4 +1,4 @@
-const { Supporter, Email, Attachment } = require('./../../models/models')
+const { Email, Attachment } = require('./../../models/emailModels')
 const response = require('./../../helpers/responseHelper')
 const mongoose = require('mongoose')
 const { body, validationResult } = require('express-validator')

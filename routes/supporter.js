@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.use('/login', require("../views/supporter/login"))
 
-router.use(require("../middlewares/authorizeSupporterToken"))
+router.use(require("../middlewares/checkAccessToken").jwtAuth)
 
 router.use('/sendmail', require("../views/supporter/sendMail"))
 

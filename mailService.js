@@ -1,4 +1,4 @@
-const { Email, Attachment } = require('./models/models')
+const { Email, Attachment } = require('./models/emailModels')
 const { sendMail } = require('./helpers')
 
 
@@ -37,7 +37,7 @@ const init = async () => {
     if (email.length > 0) {
       const { to, subject, text, attachments, room } = email[0]
       try {
-        sendMail({ to, subject, text, attachments, from: room.email })
+        await sendMail({ to, subject, text, attachments, from: room.email })
         await Email.updateOne({ _id: email[0]._id }, { sent: true })
       } catch (err) {
         console.log(err)
