@@ -1,5 +1,16 @@
 # Repository pattern implementation using Node Express
 
+<p>
+by running the app, 
+<br>
+express web server will be up, also a service (db listener)
+will be up,
+which will listen to new emails and will try to send them.
+</p>
+
+<h4>
+in order to run the app in dev env:
+</h4>
 <ul>
 <li>run npm i</li>
 <li>run npm start</li>
