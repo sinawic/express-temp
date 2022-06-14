@@ -17,7 +17,6 @@ const SupporterSchema = new mongoose.Schema({
   active: { type: Boolean, default: true },
   room: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'room' }
 })
-SupporterSchema.index({ email: 1 }, { unique: true })
 const Supporter = mongoose.model('supporter', SupporterSchema)
 
 

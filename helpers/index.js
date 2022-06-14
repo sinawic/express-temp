@@ -1,5 +1,6 @@
 var crypto = require('crypto')
 var nodemailer = require('nodemailer')
+const { unlink } = require('fs')
 
 const connection_string = process.env.DB_CONNECTION_STRING,
   accessTokenSecret = process.env.ACCESS_TOKEN_SECRET
@@ -44,7 +45,14 @@ function sendMail(options) {
   })
 }
 
+function removeFile(path) {
+  unlink(path, (err) => {
+    if (err) console.log(err)
+    console.log('successfully deleted ' + path);
+  })
+}
+
 
 module.exports = {
-  sha1, connection_string, accessTokenSecret, sendMail
+  sha1, connection_string, accessTokenSecret, sendMail, removeFile
 }
