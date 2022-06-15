@@ -34,8 +34,6 @@ const init = async () => {
       }, { $unwind: '$room' }
     ])
 
-    console.log(email)
-
     if (email.length > 0) {
       const { to, subject, text, attachments, room } = email[0]
       try {
