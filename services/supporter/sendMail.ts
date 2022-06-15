@@ -1,9 +1,9 @@
-const response = require('./../../helpers/responseHelper')
-const { removeFile } = require('./../../helpers')
-const { createEmail, createAttachment, deleteAttachment } = require('./../../repositories/email')
-const { body, validationResult } = require('express-validator')
-const path = require('path')
-const multer = require('multer')
+import * as response from './../../helpers/responseHelper'
+import { removeFile } from './../../helpers'
+import { createEmail, createAttachment, deleteAttachment } from './../../repositories/email'
+import { body, validationResult } from 'express-validator'
+import path from 'path'
+import multer from 'multer'
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => { // setting destination of uploading files   
@@ -14,7 +14,7 @@ const fileStorage = multer.diskStorage({
   }
 })
 
-module.exports.sendMail = [
+export const sendMail = [
   multer({ storage: fileStorage, limits: { fileSize: '2mb' } })
     .fields([{ name: 'files', maxCount: 10 }]),
   body('to').optional(false).isEmail(),

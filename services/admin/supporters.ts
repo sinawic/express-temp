@@ -1,10 +1,10 @@
-const response = require('../../helpers/responseHelper')
-const { body, validationResult } = require('express-validator')
-const { getSupporters, getSupporterDetails, createSupporter, editSupporter, deleteSupporter } = require('../../repositories/supporter')
-const { getRoomDetails } = require('../../repositories/rooms')
+import * as response from '../../helpers/responseHelper'
+import { body, validationResult } from 'express-validator'
+import { getSupporters, getSupporterDetails, createSupporter, editSupporter, deleteSupporter } from '../../repositories/supporter'
+import { getRoomDetails } from '../../repositories/rooms'
 
 
-module.exports.getSupporters = async function (req, res, next) {
+const _getSupporters = async function (req, res, next) {
   try {
     const page = req.query.page || 1,
       paging = req.query.paging || 16
@@ -17,7 +17,7 @@ module.exports.getSupporters = async function (req, res, next) {
   }
 }
 
-module.exports.getSupporterDetails = async function (req, res, next) {
+const _getSupporterDetails = async function (req, res, next) {
   try {
     const supporter = await getSupporterDetails({ _id: req.params.id })
     if (supporter)
@@ -29,7 +29,7 @@ module.exports.getSupporterDetails = async function (req, res, next) {
   }
 }
 
-module.exports.createSupporter = [
+const _createSupporter = [
   body('username').optional(false).isLength({ min: 5 }),
   body('password').optional(false).isLength({ min: 5 }),
   body('room').optional(false).isLength({ min: 24, max: 24 }),
@@ -55,7 +55,7 @@ module.exports.createSupporter = [
     }
   }]
 
-module.exports.editSupporter = [
+const _editSupporter = [
   body('username').optional(false).isLength({ min: 5 }),
   body('password').optional(false).isLength({ min: 5 }),
   body('room').optional(false).isLength({ min: 24, max: 24 }),
@@ -77,7 +77,7 @@ module.exports.editSupporter = [
     }
   }]
 
-module.exports.deleteSupporter = async function (req, res, next) {
+const _deleteSupporter = async function (req, res, next) {
   try {
     const supporter = await deleteSupporter({ _id: req.params.id })
     if (supporter)
@@ -89,3 +89,10 @@ module.exports.deleteSupporter = async function (req, res, next) {
   }
 }
 
+export {
+  _getSupporters as getSupporters,
+  _getSupporterDetails as getSupporterDetails,
+  _createSupporter as createSupporter,
+  _editSupporter as editSupporter,
+  _deleteSupporter as deleteSupporter
+}

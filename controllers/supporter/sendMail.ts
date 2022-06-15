@@ -1,8 +1,8 @@
-const express = require('express')
+import express from 'express'
 const router = express.Router()
 
 const Service = require('../../services/supporter/sendMail')
 
 router.post('/', Service.sendMail)
 
-module.exports = router
+export default router

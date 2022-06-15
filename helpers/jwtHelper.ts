@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken')
-const { getRequesterSupporter } = require('../repositories/supporter')
+import jwt from 'jsonwebtoken'
+import { getRequesterSupporter } from '../repositories/supporter'
 
 const genJWTtoken = (data, exp = Math.floor(Date.now() / 1000) + (60 * 60 * 60)) => {
   return jwt.sign({ data, exp }, process.env.ACCESS_TOKEN_SECRET)
@@ -19,4 +19,4 @@ const verifyJWTtoken = async (token) => {
   })
 }
 
-module.exports = { genJWTtoken, verifyJWTtoken }
+export { genJWTtoken, verifyJWTtoken }

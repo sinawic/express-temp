@@ -1,5 +1,5 @@
-const response = require("../helpers/responseHelper");
-const { verifyJWTtoken } = require("../helpers/jwtHelper");
+import * as response from "../helpers/responseHelper";
+import { verifyJWTtoken } from "../helpers/jwtHelper";
 require("dotenv").config();
 
 /**

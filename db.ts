@@ -1,11 +1,11 @@
 // Bring Mongoose into the app 
-var mongoose = require('mongoose');
-const { connection_string } = require('./helpers');
+import mongoose from 'mongoose'
+import { connection_string } from './helpers';
 
 const db_connection = async () => {
 
   // Create the database connection 
-  await mongoose.connect(connection_string);
+  connection_string && await mongoose.connect(connection_string);
 
   // CONNECTION EVENTS
   // When successfully connected
@@ -32,4 +32,4 @@ const db_connection = async () => {
   });
 }
 
-module.exports = { db_connection }
+export { db_connection }

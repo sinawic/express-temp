@@ -1,7 +1,7 @@
-const express = require('express')
+import express from 'express'
 const router = express.Router()
 
-const Service = require('../../services/admin/rooms')
+import * as Service from '../../services/admin/rooms'
 
 router.get('/', Service.getRooms)
 
@@ -13,4 +13,4 @@ router.put('/:id', Service.editRoom)
 
 router.delete('/:id', Service.deleteRoom)
 
-module.exports = router
+export default router

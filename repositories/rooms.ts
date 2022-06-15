@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const { Room } = require('../models/adminModels')
+import mongoose from 'mongoose'
+import { Room } from '../models/adminModels'
 
 const getRooms = async ({ page, paging }) => {
   const rooms = await Room.aggregate([
@@ -37,4 +37,4 @@ const deleteRoom = async ({ _id }) => {
   return await Room.findOneAndDelete({ _id: new mongoose.Types.ObjectId(_id) })
 }
 
-module.exports = { getRooms, getRoomDetails, createRoom, editRoom, deleteRoom }
+export { getRooms, getRoomDetails, createRoom, editRoom, deleteRoom }

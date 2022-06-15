@@ -1,8 +1,8 @@
-const express = require('express')
+import express from 'express'
 const router = express.Router()
 
 const Service = require('../../services/supporter/login')
 
 router.post('/', Service.login)
 
-module.exports = router
+export default router

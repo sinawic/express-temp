@@ -1,9 +1,9 @@
-const response = require('../../helpers/responseHelper')
-const { getRooms, getRoomDetails, createRoom, editRoom, deleteRoom } = require('../../repositories/rooms')
-const { body, validationResult } = require('express-validator')
+import * as response from '../../helpers/responseHelper'
+import { getRooms, getRoomDetails, createRoom, editRoom, deleteRoom } from '../../repositories/rooms'
+import { body, validationResult } from 'express-validator'
 
 
-module.exports.getRooms = async function (req, res, next) {
+const _getRooms = async function (req, res, next) {
   try {
     const page = req.query.page || 1,
       paging = req.query.paging || 16
@@ -16,7 +16,7 @@ module.exports.getRooms = async function (req, res, next) {
   }
 }
 
-module.exports.getRoomDetails = async function (req, res, next) {
+const _getRoomDetails = async function (req, res, next) {
   try {
     const room = await getRoomDetails({ _id: req.params.id })
     if (room)
@@ -28,7 +28,7 @@ module.exports.getRoomDetails = async function (req, res, next) {
   }
 }
 
-module.exports.createRoom = [
+const _createRoom = [
   body('name').optional(false).isLength({ min: 5 }),
   body('email').optional(false).isEmail(),
   body('website').optional(false).isLength({ min: 5 }),
@@ -50,7 +50,7 @@ module.exports.createRoom = [
     }
   }]
 
-module.exports.editRoom = [
+const _editRoom = [
   body('name').optional(false).isLength({ min: 5 }),
   body('email').optional(false).isEmail(),
   body('website').optional(false).isLength({ min: 5 }),
@@ -72,7 +72,7 @@ module.exports.editRoom = [
     }
   }]
 
-module.exports.deleteRoom = async function (req, res, next) {
+const _deleteRoom = async function (req, res, next) {
   try {
     const room = await deleteRoom({ _id: req.params.id })
     if (room)
@@ -84,3 +84,10 @@ module.exports.deleteRoom = async function (req, res, next) {
   }
 }
 
+export {
+  _getRooms as getRooms,
+  _getRoomDetails as getRoomDetails,
+  _createRoom as createRoom,
+  _editRoom as editRoom,
+  _deleteRoom as deleteRoom
+}

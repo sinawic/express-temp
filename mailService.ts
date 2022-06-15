@@ -1,5 +1,5 @@
-const { Email, Attachment } = require('./models/emailModels')
-const { sendMail } = require('./helpers')
+import { Email } from './models/emailModels'
+import { sendMail } from './helpers'
 
 
 // a service which listens to database changes
@@ -50,4 +50,5 @@ const init = async () => {
 
 }
 
-module.exports = { init }
+
+export { init }

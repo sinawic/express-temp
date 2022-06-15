@@ -1,5 +1,5 @@
-const mongoose = require('mongoose')
-const { Email, Attachment } = require('../models/emailModels')
+import mongoose from 'mongoose'
+import { Email, Attachment } from '../models/emailModels'
 
 const createEmail = async ({ to, subject, text, supporter, room }) => {
   const email = new Email({
@@ -22,4 +22,4 @@ const deleteAttachment = async ({ path }) => {
   return await Attachment.deleteOne({ path })
 }
 
-module.exports = { createEmail, createAttachment, deleteAttachment }
+export { createEmail, createAttachment, deleteAttachment }

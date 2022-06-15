@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
-const { Supporter } = require('../models/adminModels')
-const { sha1 } = require('../helpers')
+import mongoose from 'mongoose'
+import { Supporter } from '../models/adminModels'
+import { sha1 } from '../helpers'
 
 const getSupporters = async ({ page, paging }) => {
   const supporters = await Supporter.aggregate([
@@ -53,7 +53,7 @@ const getSupporterByCred = async ({ username, password, room }) => {
   })
 }
 
-module.exports = {
+export {
   getRequesterSupporter, getSupporterByCred,
   getSupporters, getSupporterDetails, createSupporter,
   editSupporter, deleteSupporter

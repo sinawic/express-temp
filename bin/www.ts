@@ -5,11 +5,11 @@
  */
 require("dotenv").config()
 
-var app = require('../app');
+var app = require('../app.ts');
 var debug = require('debug')('express-temp:server');
 var http = require('http');
-const { db_connection } = require('./../db')
-const { init: mailService } = require('./../mailService')
+import { db_connection } from './../db';
+import { init as mailService } from './../mailService';
 
 db_connection()
 
@@ -38,7 +38,7 @@ server.on('listening', onListening);
  * Normalize a port into a number, string, or false.
  */
 
-function normalizePort(val) {
+function normalizePort(val: string) {
   var port = parseInt(val, 10);
 
   if (isNaN(port)) {
@@ -58,7 +58,7 @@ function normalizePort(val) {
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error) {
+function onError(error: any) {
   if (error.syscall !== 'listen') {
     throw error;
   }
@@ -94,4 +94,4 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-mailService()
+// mailService()

@@ -1,6 +1,6 @@
-var crypto = require('crypto')
-var nodemailer = require('nodemailer')
-const { unlink } = require('fs')
+import crypto from 'crypto'
+import nodemailer from 'nodemailer'
+import { unlink } from 'fs'
 
 const connection_string = process.env.DB_CONNECTION_STRING,
   accessTokenSecret = process.env.ACCESS_TOKEN_SECRET
@@ -56,6 +56,6 @@ function removeFile(path) {
 }
 
 
-module.exports = {
+export {
   sha1, connection_string, accessTokenSecret, sendMail, removeFile
 }

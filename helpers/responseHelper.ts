@@ -12,7 +12,7 @@
  * @returns {{status: boolean, message: string, data: any}}
  */
 
-exports.success = (res, data) => {
+const success = (res, data) => {
   return res.status(200).send({
     status: true,
     message: "",
@@ -30,7 +30,7 @@ exports.success = (res, data) => {
  * @returns
  */
 
-exports.error = function (res, message, statusCode = 404, data = []) {
+const error = function (res, message, statusCode = 404, data = []) {
   return res.status(statusCode).json({
     status: false,
     message: message,
@@ -46,7 +46,7 @@ exports.error = function (res, message, statusCode = 404, data = []) {
  * @returns {{status: boolean, message: string, data: []}}
  */
 
-exports.exception = function (res, error) {
+const exception = function (res, error) {
   let data = [];
   let message = error.message;
   data = error.data;
@@ -58,3 +58,5 @@ exports.exception = function (res, error) {
     data: data,
   });
 };
+
+export { error, success, exception }

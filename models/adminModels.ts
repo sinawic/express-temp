@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
 const RoomSchema = new mongoose.Schema({
   date_created: { type: Date, default: new Date() },
@@ -20,6 +20,6 @@ const SupporterSchema = new mongoose.Schema({
 const Supporter = mongoose.model('supporter', SupporterSchema)
 
 
-module.exports = {
+export {
   Supporter, SupporterSchema, Room, RoomSchema
 }

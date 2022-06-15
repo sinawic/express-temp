@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
 const AttachmentSchema = new mongoose.Schema({
   originalname: String,
@@ -26,6 +26,6 @@ const Email = mongoose.model('email', EmailSchema)
 
 
 
-module.exports = {
+export {
   Attachment, AttachmentSchema, Email, EmailSchema
 }

@@ -1,10 +1,10 @@
-const response = require('./../../helpers/responseHelper')
-const { getSupporterByCred } = require('./../../repositories/supporter')
-const { genJWTtoken } = require('./../../helpers/jwtHelper')
-const { body, validationResult } = require('express-validator')
+import * as response from './../../helpers/responseHelper'
+import { getSupporterByCred } from './../../repositories/supporter'
+import { genJWTtoken } from './../../helpers/jwtHelper'
+import { body, validationResult } from 'express-validator'
 
 
-module.exports.login = [
+export const login = [
   body('username').optional(false),
   body('password').optional(false),
   body('room').optional(false).isLength({ min: 24, max: 24 }),
