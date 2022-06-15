@@ -15,10 +15,13 @@ function sha1(val) {
 // with source of the email read from env by default
 // and options as passed
 function sendMail(options) {
+  // options.from || 
+  console.log('sending with:', process.env.SOURCE_EMAIL, process.env.SOURCE_PASSWORD)
+
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: options.from || process.env.SOURCE_EMAIL,
+      user: process.env.SOURCE_EMAIL,
       pass: process.env.SOURCE_PASSWORD
     }
   })
