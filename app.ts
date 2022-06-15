@@ -1,6 +1,7 @@
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
+import routes from './routes'
 
 var cors = require('cors')
 
@@ -14,7 +15,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
-require("./routes")(app)
+routes(app)
 
 // error handler
 app.use('/', (req, res, next) => {

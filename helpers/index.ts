@@ -2,10 +2,18 @@ import crypto from 'crypto'
 import nodemailer from 'nodemailer'
 import { unlink } from 'fs'
 
+interface IMailOptions {
+  to: string,
+  from: string | undefined,
+  subject: string,
+  text: string,
+  attachments?: { path: any; }[]
+}
+
 const connection_string = process.env.DB_CONNECTION_STRING,
   accessTokenSecret = process.env.ACCESS_TOKEN_SECRET
 
-function sha1(val) {
+function sha1(val: string) {
   var shasum = crypto.createHash('sha1')
   shasum.update(val)
   return shasum.digest('hex')
@@ -14,7 +22,7 @@ function sha1(val) {
 // this will try to send an email using node mailer
 // with source of the email read from env by default
 // and options as passed
-function sendMail(options) {
+function sendMail(options: IMailOptions) {
   // options.from || 
   console.log('sending with:', process.env.SOURCE_EMAIL, process.env.SOURCE_PASSWORD)
 
@@ -26,7 +34,7 @@ function sendMail(options) {
     }
   })
 
-  var mailOptions = {
+  var mailOptions: IMailOptions = {
     from: options.from || process.env.SOURCE_EMAIL,
     to: options.to,
     subject: options.subject,
@@ -38,7 +46,7 @@ function sendMail(options) {
     mailOptions.attachments = options.attachments.map(attachment => ({ path: attachment.path }))
   }
 
-  return transporter.sendMail(mailOptions, function (error, info) {
+  return transporter.sendMail(mailOptions, function (error: any, info) {
     if (error) {
       throw new Error(error)
       console.log(error);
@@ -48,7 +56,7 @@ function sendMail(options) {
   })
 }
 
-function removeFile(path) {
+function removeFile(path: String | any) {
   unlink(path, (err) => {
     if (err) console.log(err)
     console.log('successfully deleted ' + path);

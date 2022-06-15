@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router()
 
-const Service = require('../../services/supporter/sendMail')
+import * as Service from '../../services/supporter/sendMail'
 
 router.post('/', Service.sendMail)
 

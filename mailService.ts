@@ -8,7 +8,7 @@ import { sendMail } from './helpers'
 // so that the data doesn't get lost in high scales
 const init = async () => {
   const i = process.env.INTERVAL || 5000
-  console.log(`Mail Service is running every ${i / 1000} seconds...`)
+  console.log(`Mail Service is running every ${+i / 1000} seconds...`)
 
   setInterval(async () => {
 
@@ -34,6 +34,8 @@ const init = async () => {
       }, { $unwind: '$room' }
     ])
 
+    console.log(email)
+
     if (email.length > 0) {
       const { to, subject, text, attachments, room } = email[0]
       try {
@@ -46,7 +48,7 @@ const init = async () => {
       console.log('No emails to send')
 
 
-  }, i)
+  }, +i)
 
 }
 

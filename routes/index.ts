@@ -1,4 +1,7 @@
-export const routes = (app) => {
-  app.use("/admin", require("./admin"))
-  app.use("/supporter", require("./supporter"))
+import adminRoute from './admin';
+import supportersRoute from './supporter';
+
+export default (app: any) => {
+  app.use("/admin", adminRoute)
+  app.use("/supporter", supportersRoute)
 }

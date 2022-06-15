@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router()
 
-const Service = require('../../services/admin/supporters')
+import * as Service from '../../services/admin/supporters'
 
 router.get('/', Service.getSupporters)
 

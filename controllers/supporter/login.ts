@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router()
 
-const Service = require('../../services/supporter/login')
+import * as Service from '../../services/supporter/login'
 
 router.post('/', Service.login)
 

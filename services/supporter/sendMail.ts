@@ -4,6 +4,8 @@ import { createEmail, createAttachment, deleteAttachment } from './../../reposit
 import { body, validationResult } from 'express-validator'
 import path from 'path'
 import multer from 'multer'
+import { NextFunction, Request, Response } from 'express'
+import { IAttachment } from '../../types'
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => { // setting destination of uploading files   
@@ -15,12 +17,12 @@ const fileStorage = multer.diskStorage({
 })
 
 export const sendMail = [
-  multer({ storage: fileStorage, limits: { fileSize: '2mb' } })
+  multer({ storage: fileStorage })
     .fields([{ name: 'files', maxCount: 10 }]),
   body('to').optional(false).isEmail(),
   body('subject').optional(false).isLength({ min: 5 }),
   body('text').optional(false).isLength({ min: 5 }),
-  async function (req, res, next) {
+  async function (req: Request | any, res: Response, next: NextFunction) {
     try {
       const errors = validationResult(req)
       if (!errors.isEmpty()) return response.error(res, errors.array(), 400)
@@ -29,16 +31,16 @@ export const sendMail = [
       const files = req.files.files
 
       const email = await createEmail({
-        to, subject, text, supporter: req.user._id, room: req.user.room
+        to, subject, text, supporter: req.user._id, room: req.user.room.toString()
       })
 
-      files && files.map(async file => {
+      files && files.map(async (file: IAttachment) => {
         await createAttachment({ file, email })
       })
 
       response.success(res, email)
-    } catch (err) {
-      req.files && req.files.files && req.files.files.map(async file => {
+    } catch (err: any) {
+      req.files && req.files.files && req.files.files.map(async (file: IAttachment) => {
         await deleteAttachment({ path: file.path })
         removeFile(file.path)
       })

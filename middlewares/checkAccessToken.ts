@@ -1,18 +1,9 @@
 import * as response from "../helpers/responseHelper";
 import { verifyJWTtoken } from "../helpers/jwtHelper";
+import { NextFunction, Request, Response } from "express";
 require("dotenv").config();
 
-/**
- * @description checks the Basic Authentication
- * @function anoynomous
- * @middleware
- * @param {Express.Request} req
- * @param {Express.Response} res
- * @param {Express.NextFunction} next
- * @returns {Promise<any>}
- */
-
-module.exports.basicAuth = async (req, res, next) => {
+export const basicAuth = async (req: Request, res: Response, next: NextFunction) => {
   if (
     !req.headers.authorization ||
     req.headers.authorization.indexOf("Basic ") === -1
@@ -37,7 +28,7 @@ module.exports.basicAuth = async (req, res, next) => {
   return response.error(res, "User or pass was wrong!");
 }
 
-module.exports.jwtAuth = async (req, res, next) => {
+export const jwtAuth = async (req: Request | any, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization
 
   if (authHeader) {

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www.ts"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -23,6 +23,8 @@
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.12",
+    "@types/debug": "^4.1.7",
     "@types/express": "^4.17.13",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/morgan": "^1.9.3",

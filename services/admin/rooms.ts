@@ -1,9 +1,10 @@
 import * as response from '../../helpers/responseHelper'
 import { getRooms, getRoomDetails, createRoom, editRoom, deleteRoom } from '../../repositories/rooms'
 import { body, validationResult } from 'express-validator'
+import { NextFunction, Request, Response } from 'express'
 
 
-const _getRooms = async function (req, res, next) {
+const _getRooms = async function (req: Request, res: Response, next: NextFunction) {
   try {
     const page = req.query.page || 1,
       paging = req.query.paging || 16
@@ -11,19 +12,19 @@ const _getRooms = async function (req, res, next) {
     const data = await getRooms({ page, paging })
 
     response.success(res, data)
-  } catch (err) {
+  } catch (err: any) {
     response.error(res, err.toString(), 400)
   }
 }
 
-const _getRoomDetails = async function (req, res, next) {
+const _getRoomDetails = async function (req: Request, res: Response, next: NextFunction) {
   try {
     const room = await getRoomDetails({ _id: req.params.id })
     if (room)
       response.success(res, room)
     else
       response.error(res, 'Room not found')
-  } catch (err) {
+  } catch (err: any) {
     response.error(res, err.toString(), 400)
   }
 }
@@ -32,7 +33,7 @@ const _createRoom = [
   body('name').optional(false).isLength({ min: 5 }),
   body('email').optional(false).isEmail(),
   body('website').optional(false).isLength({ min: 5 }),
-  async function (req, res, next) {
+  async function (req: Request, res: Response, next: NextFunction) {
     try {
       const errors = validationResult(req)
       if (!errors.isEmpty()) return response.error(res, errors.array(), 400)
@@ -45,7 +46,7 @@ const _createRoom = [
         website
       })
       response.success(res, room)
-    } catch (err) {
+    } catch (err: any) {
       response.error(res, err.toString(), 400)
     }
   }]
@@ -54,7 +55,7 @@ const _editRoom = [
   body('name').optional(false).isLength({ min: 5 }),
   body('email').optional(false).isEmail(),
   body('website').optional(false).isLength({ min: 5 }),
-  async function (req, res, next) {
+  async function (req: Request, res: Response, next: NextFunction) {
     try {
       const errors = validationResult(req)
       if (!errors.isEmpty()) return response.error(res, errors.array(), 400)
@@ -67,19 +68,19 @@ const _editRoom = [
       else
         response.error(res, 'Room not found')
 
-    } catch (err) {
+    } catch (err: any) {
       response.error(res, err.toString(), 400)
     }
   }]
 
-const _deleteRoom = async function (req, res, next) {
+const _deleteRoom = async function (req: Request, res: Response, next: NextFunction) {
   try {
     const room = await deleteRoom({ _id: req.params.id })
     if (room)
       response.success(res, room)
     else
       response.error(res, 'Room not found')
-  } catch (err) {
+  } catch (err: any) {
     response.error(res, err.toString(), 400)
   }
 }
