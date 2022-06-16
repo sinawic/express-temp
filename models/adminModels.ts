@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const RoomSchema = new mongoose.Schema({
   date_created: { type: Date, default: new Date() },
   name: { type: String, required: true },
-  email: { type: String, default: process.env.MAIN_EMAIL },
+  email: { type: String, default: process.env.SOURCE_EMAIL },
   website: { type: String, required: true }
 })
 RoomSchema.index({ name: 1 }, { unique: true })
