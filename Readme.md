@@ -21,7 +21,6 @@ in order to run the app in dev env:
   PORT=3000
   DB_CONNECTION_STRING="mongodb://root:example@localhost:27017/express?authSource=admin"
   ACCESS_TOKEN_SECRET="secret"
-  MAIN_EMAIL="x@y.z"
   BASICAUTH_USERNAME="admin"
   BASICAUTH_PASSWORD="admin"
   INTERVAL=3000
