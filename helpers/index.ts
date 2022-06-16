@@ -24,18 +24,18 @@ function sha1(val: string) {
 // and options as passed
 function sendMail(options: IMailOptions) {
   // options.from || 
-  console.log('sending to:', options.to)
+  console.log('sending from:', options.from, 'sending to:', options.to)
 
   var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.SOURCE_EMAIL,
+      user: options.from,
       pass: process.env.SOURCE_PASSWORD
     }
   })
 
   var mailOptions: IMailOptions = {
-    from: options.from || process.env.SOURCE_EMAIL,
+    from: options.from,
     to: options.to,
     subject: options.subject,
     text: options.text,
