@@ -24,7 +24,7 @@ function sha1(val: string) {
 // and options as passed
 function sendMail(options: IMailOptions) {
   // options.from || 
-  console.log('sending with:', process.env.SOURCE_EMAIL, process.env.SOURCE_PASSWORD)
+  console.log('sending to:', options.to)
 
   var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -39,6 +39,13 @@ function sendMail(options: IMailOptions) {
     to: options.to,
     subject: options.subject,
     text: options.text,
+    attachments: []
+  }
+
+  if (options.attachments) {
+    options.attachments.map(a => {
+      mailOptions.attachments?.push({ path: a.path })
+    })
   }
 
   // add attachments if any
